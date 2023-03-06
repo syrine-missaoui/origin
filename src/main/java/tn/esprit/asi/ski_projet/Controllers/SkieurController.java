@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.asi.ski_projet.Controllers.AbonnementController;
 import tn.esprit.asi.ski_projet.Controllers.AbonnementController;
 import tn.esprit.asi.ski_projet.Entities.Skieur;
+import tn.esprit.asi.ski_projet.Entities.TypeAbonnement;
 import tn.esprit.asi.ski_projet.Services.IskieurService;
 
 import java.util.List;
@@ -49,6 +50,13 @@ public class SkieurController {
     public Skieur skieurtoAbo(@PathVariable long numSkieur, @PathVariable long numAbon){
         return iskieurService.skieurtoAbo(numSkieur,numAbon);
     }
+
+    public List<Skieur> retrieveSkiersBySubscriptionType (TypeAbonnement typeAbonnement){
+
+
+        return iskieurService.retrieveSkiersBySubscriptionType(typeAbonnement);
+    }
+
 
 
 

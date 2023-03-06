@@ -3,6 +3,7 @@ package tn.esprit.asi.ski_projet.Services;
 
 
 import tn.esprit.asi.ski_projet.Entities.Skieur;
+import tn.esprit.asi.ski_projet.Entities.TypeAbonnement;
 
 import java.util.List;
 
@@ -23,4 +24,8 @@ public interface IskieurService {
 
 
     Skieur skieurtoAbo(long numSkieur, long numAbon);
+
+     List<Skieur> retrieveSkiersBySubscriptionType(TypeAbonnement typeAbonnement);
+
+
 }

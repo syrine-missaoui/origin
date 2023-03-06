@@ -6,6 +6,7 @@ import org.springframework.util.Assert;
 import tn.esprit.asi.ski_projet.Entities.Abonnement;
 import tn.esprit.asi.ski_projet.Entities.Piste;
 import tn.esprit.asi.ski_projet.Entities.Skieur;
+import tn.esprit.asi.ski_projet.Entities.TypeAbonnement;
 import tn.esprit.asi.ski_projet.Repositories.AbonnementRepo;
 import tn.esprit.asi.ski_projet.Repositories.PisteRepo;
 import tn.esprit.asi.ski_projet.Repositories.SkieurRepo;
@@ -52,7 +53,7 @@ public class SkieurServiceImpl implements IskieurService {
 
             //recuperation des objets
         Skieur skieur =skieurRepo.findById(numSkieur).orElse(null);
-        Assert.notNull(skieur,"skieur not found");//  Assert permet de verifier si l objet null ou non
+        Assert.notNull(skieur,"skieur not found");//  Assert permet de verifier si l objet skieur null ou non
         Piste piste =pisteRepo.findById(numPiste).orElse(null);
         Assert.notNull(piste,"piste not found");
 
@@ -70,20 +71,30 @@ public class SkieurServiceImpl implements IskieurService {
 
     @Override
     public Skieur skieurtoAbo(long numSkieur, long numAbon) {
-        Skieur skieur = abonRepository.findById(numSkieur).orElse(null) ;
-
+        //recuperation d'objets skieur
+        Skieur skieur =  abonRepository.findById(numSkieur).orElse(null) ;
         Assert.notNull(skieur,"Skieur not found");
-
+        //recupeartion de l'objet abonnment
         Abonnement abonnement=AbonnementRepo.findById(numAbon).orElse(null);
         Assert.notNull(abonnement,"abonnement not found");
 
         skieur.setAbonnement(abonnement);
         return abonRepository.save(skieur);
-        return null;
     }
 
+   public List<Skieur> retrieveSkiersBySubscriptionType(TypeAbonnement typeAbonnement){
+     //soit nekhdem haka w ken andi barcha nmchi lel chouche  repo w nzid requete
+      /* List<Skieur> list = new ArrayList<>();
+       for (Skieur s :getAll()){
+        if (s.getAbonnment().gettypeAbon().equals(typeAbonnement))
 
-}
+           }*/
+       return  SkieurRepo.findByInscription
+
+
+
+
+   }
 
 
 
